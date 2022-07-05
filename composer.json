@@ -1,0 +1,16 @@
+{
+  "name": "admin/alexden-plugin",
+  "description": "Just a wp plugin with ...",
+  "authors": [
+    {
+      "name": "Oleksii Denysiuk",
+      "email": "devlikedes@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+        "inc\\": "./inc"
+    }
+  }
+}
