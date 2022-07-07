@@ -1,11 +1,17 @@
 <?php
 
+/**
+ * @package AlexDenPlugin
+ */
+
 namespace inc\Base;
+
+use inc\Base\BaseController;
 
 /**
  * Class Enqueue
  */
-class Enqueue
+class Enqueue extends BaseController
 {
 	public function register()
 	{
@@ -15,8 +21,8 @@ class Enqueue
 	public function enqueue()
 	{
 		// add scripts
-		wp_enqueue_style('alexdenstyles', PLUGIN_URL . '/assets/main.css', [], false, 'all');
-		wp_enqueue_script('alexdenscripts', PLUGIN_URL . '/assets/main.js', [], false, 'all');
+		wp_enqueue_style('alexdenstyles', $this->plugin_url . '/assets/main.css', [], false, 'all');
+		wp_enqueue_script('alexdenscripts', $this->plugin_url . '/assets/main.js', [], false, 'all');
 	}
 
 }
