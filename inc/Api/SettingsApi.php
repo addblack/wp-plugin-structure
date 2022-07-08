@@ -121,7 +121,7 @@ class SettingsApi
 				(isset($field['callback'])) ? $field['callback'] : '',
 				$field['page'],
 				$field['section'],
-				(isset($field['args'])) ?: '',
+				(isset($field['args'])) ? $field['args'] : '',
 			);
 		}
 
