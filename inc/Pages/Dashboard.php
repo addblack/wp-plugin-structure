@@ -13,10 +13,10 @@ use inc\Api\Callbacks\ManagerCallbacks;
 /**
  * Class AdminPages
  */
-class Admin extends BaseController
+class Dashboard extends BaseController
 {
 	public $pages = [];
-	public $subpages = [];
+//	public $subpages = [];
 
 	public $settings;
 	public $callbacks;
@@ -30,13 +30,13 @@ class Admin extends BaseController
 		$this->callbacks_manager = new ManagerCallbacks();
 
 		$this->set_pages();
-		$this->set_sub_pages();
+//		$this->set_sub_pages();
 
 		$this->set_settings();
 		$this->set_sections();
 		$this->set_fields();
 
-		$this->settings->add_pages($this->pages)->with_sub_page('Dashboard')->add_subpages($this->subpages)->register();
+		$this->settings->add_pages($this->pages)->with_sub_page('Dashboard')->register();
 	}
 
 	public function set_pages()
@@ -52,34 +52,34 @@ class Admin extends BaseController
 		]];
 	}
 
-	public function set_sub_pages()
-	{
-		$this->subpages = [[
-			'parent_slug' => 'alexdenplugin',
-			'page_title' => 'Custom post types',
-			'menu_title' => 'CPT',
-			'capability' => 'manage_options',
-			'menu_slug' => 'alexden_cpt',
-			'callback' => [$this->callbacks, 'cpt_dashboard'],
-		],
-			[
-				'parent_slug' => 'alexdenplugin',
-				'page_title' => 'Custom Taxonomies',
-				'menu_title' => 'Taxonomies',
-				'capability' => 'manage_options',
-				'menu_slug' => 'alexden_taxes',
-				'callback' => [$this->callbacks, 'taxes_dashboard'],
-			],
-			[
-				'parent_slug' => 'alexdenplugin',
-				'page_title' => 'Widgets',
-				'menu_title' => 'Widgets',
-				'capability' => 'manage_options',
-				'menu_slug' => 'alexden_widgets',
-				'callback' => [$this->callbacks, 'widgets_dashboard'],
-			],
-		];
-	}
+//	public function set_sub_pages()
+//	{
+//		$this->subpages = [[
+//			'parent_slug' => 'alexdenplugin',
+//			'page_title' => 'Custom post types',
+//			'menu_title' => 'CPT',
+//			'capability' => 'manage_options',
+//			'menu_slug' => 'alexden_cpt',
+//			'callback' => [$this->callbacks, 'cpt_dashboard'],
+//		],
+//			[
+//				'parent_slug' => 'alexdenplugin',
+//				'page_title' => 'Custom Taxonomies',
+//				'menu_title' => 'Taxonomies',
+//				'capability' => 'manage_options',
+//				'menu_slug' => 'alexden_taxes',
+//				'callback' => [$this->callbacks, 'taxes_dashboard'],
+//			],
+//			[
+//				'parent_slug' => 'alexdenplugin',
+//				'page_title' => 'Widgets',
+//				'menu_title' => 'Widgets',
+//				'capability' => 'manage_options',
+//				'menu_slug' => 'alexden_widgets',
+//				'callback' => [$this->callbacks, 'widgets_dashboard'],
+//			],
+//		];
+//	}
 
 	public function set_settings()
 	{

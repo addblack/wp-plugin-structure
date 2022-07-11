@@ -14,9 +14,10 @@ final class Init
 	public static function get_services(): array
 	{
 		return [
-			Pages\Admin::class,
-			Base\Enqueue::class,
-			Base\SettingsLinks::class,
+            Pages\Dashboard::class,
+            Base\Enqueue::class,
+            Base\SettingsLinks::class,
+            Base\CPTController::class,
 		];
 	}
 
@@ -26,6 +27,8 @@ final class Init
 	 */
 	public static function register_services()
 	{
+
+
 		foreach (self::get_services() as $class) {
 			$service = self::instantiate($class);
 
