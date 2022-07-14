@@ -8,7 +8,6 @@ namespace inc\Base;
 
 use inc\Api\Callbacks\AdminCallbacks;
 use inc\Api\SettingsApi;
-use inc\Base\BaseController;
 
 class CPTController extends BaseController
 {

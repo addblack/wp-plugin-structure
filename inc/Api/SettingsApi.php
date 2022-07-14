@@ -98,8 +98,6 @@ class SettingsApi
 	{
 		// register setting
 		foreach ($this->settings as $setting) {
-            var_dump($setting['option_name']);
-
 			register_setting(
 				$setting['option_group'],
 				$setting['option_name'],

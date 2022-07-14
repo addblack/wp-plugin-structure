@@ -20,7 +20,7 @@ class AdminCallbacks extends BaseController
 		return require_once("$this->plugin_path/templates/cpt.php");
 	}
 
-	public function taxes_dashboard()
+	public function taxonomy_dashboard()
 	{
 		return require_once("$this->plugin_path/templates/taxes.php");
 	}
@@ -28,6 +28,36 @@ class AdminCallbacks extends BaseController
 	public function widgets_dashboard()
 	{
 		return require_once("$this->plugin_path/templates/widgets.php");
+	}
+
+	public function gallery_dashboard()
+	{
+		return require_once("$this->plugin_path/templates/gallery.php");
+	}
+
+	public function testimonial_dashboard()
+	{
+		return require_once("$this->plugin_path/templates/testimonial.php");
+	}
+
+	public function templates_dashboard()
+	{
+		return require_once("$this->plugin_path/templates/templates.php");
+	}
+
+	public function login_dashboard()
+	{
+		return require_once("$this->plugin_path/templates/login.php");
+	}
+
+	public function membership_dashboard()
+	{
+		return require_once("$this->plugin_path/templates/membership.php");
+	}
+
+	public function chat_dashboard()
+	{
+		return require_once("$this->plugin_path/templates/chat.php");
 	}
 
 //	public function alexden_options_group($input)
