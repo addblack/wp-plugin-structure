@@ -8,8 +8,9 @@ namespace inc\Base;
 
 use inc\Api\Callbacks\AdminCallbacks;
 use inc\Api\SettingsApi;
+use LiteSpeed\Base;
 
-class ChatController
+class ChatController extends BaseController
 {
 	public $callbacks;
 
@@ -17,19 +18,19 @@ class ChatController
 
 	public function register()
 	{
-		$option = get_option( 'alexdenplugin' );
-		$activated = isset($option['chat_manager']) ? $option['chat_manager'] : false;
 
-		if($activated) {
-			$this->settings = new SettingsApi();
-			$this->callbacks = new AdminCallbacks();
-
-			$this->set_sub_pages();
-
-			$this->settings->add_subpages($this->subpages)->register();
-
-			add_action('init', [$this, 'activate']);
+		if (!$this->activated('chat_manager')) {
+			return;
 		}
+		$this->settings = new SettingsApi();
+		$this->callbacks = new AdminCallbacks();
+
+		$this->set_sub_pages();
+
+		$this->settings->add_subpages($this->subpages)->register();
+
+		add_action('init', [$this, 'activate']);
+
 	}
 
 	public function activate()

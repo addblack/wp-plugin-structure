@@ -15,9 +15,9 @@ class BaseController
 
 	public function __construct()
 	{
-		$this->plugin_path = plugin_dir_path( dirname( __FILE__, 2) );
-		$this->plugin_url = plugin_dir_url( dirname( __FILE__, 2) );
-		$this->plugin = plugin_basename( dirname( __FILE__, 3) ) . '/alexden-plugin.php';
+		$this->plugin_path = plugin_dir_path(dirname(__FILE__, 2));
+		$this->plugin_url = plugin_dir_url(dirname(__FILE__, 2));
+		$this->plugin = plugin_basename(dirname(__FILE__, 3)) . '/alexden-plugin.php';
 
 		$this->managers = [
 			'cpt_manager' => 'Activate CPT Manager',
@@ -30,6 +30,12 @@ class BaseController
 			'membership_manager' => 'Activate Membership Manager',
 			'chat_manager' => 'Activate Chat Manager',
 		];
+	}
 
+	public function activated(string $key)
+	{
+		$option = get_option('alexdenplugin');
+
+		return isset($option[$key]) ? $option[$key] : false;
 	}
 }

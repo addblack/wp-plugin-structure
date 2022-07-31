@@ -9,7 +9,7 @@ namespace inc\Base;
 use inc\Api\Callbacks\AdminCallbacks;
 use inc\Api\SettingsApi;
 
-class GalleryController
+class GalleryController extends BaseController
 {
 	public $callbacks;
 
@@ -17,21 +17,20 @@ class GalleryController
 
 	public function register()
 	{
-
-		$option = get_option( 'alexdenplugin' );
-		$activated = isset($option['gallery_manager']) ? $option['gallery_manager'] : false;
-
-		if($activated) {
-			$this->settings = new SettingsApi();
-			$this->callbacks = new AdminCallbacks();
-
-			$this->set_sub_pages();
-
-			$this->settings->add_subpages($this->subpages)->register();
-
-			add_action('init', [$this, 'activate']);
+		if (!$this->activated('gallery_manager')) {
+			return;
 		}
+
+		$this->settings = new SettingsApi();
+		$this->callbacks = new AdminCallbacks();
+
+		$this->set_sub_pages();
+
+		$this->settings->add_subpages($this->subpages)->register();
+
+		add_action('init', [$this, 'activate']);
 	}
+
 
 	public function activate()
 	{

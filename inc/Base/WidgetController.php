@@ -9,7 +9,7 @@ namespace inc\Base;
 use inc\Api\Callbacks\AdminCallbacks;
 use inc\Api\SettingsApi;
 
-class WidgetController
+class WidgetController extends BaseController
 {
 	public $callbacks;
 
@@ -17,20 +17,18 @@ class WidgetController
 
 	public function register()
 	{
-
-		$option = get_option( 'alexdenplugin' );
-		$activated = isset($option['media_widget']) ? $option['media_widget'] : false;
-
-		if($activated) {
-			$this->settings = new SettingsApi();
-			$this->callbacks = new AdminCallbacks();
-
-			$this->set_sub_pages();
-
-			$this->settings->add_subpages($this->subpages)->register();
-
-			add_action('init', [$this, 'activate']);
+		if (!$this->activated('media_widget')) {
+			return;
 		}
+
+		$this->settings = new SettingsApi();
+		$this->callbacks = new AdminCallbacks();
+
+		$this->set_sub_pages();
+
+		$this->settings->add_subpages($this->subpages)->register();
+
+		add_action('init', [$this, 'activate']);
 	}
 
 	public function activate()
